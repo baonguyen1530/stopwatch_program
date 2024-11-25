@@ -32,4 +32,28 @@ body{
     margin: 5px;
     padding: 10px 20px;
     min-width: 125px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    border-radius: 10px;
+    transition: background-color 0.2s;
+}
+#start_btn{
+    background-color: hsl(120, 100%, 25%);
+}
+#stop_btn{
+    background-color: hsl(0, 100%, 50%);
+}
+#reset_btn{
+    background-color: hsl(60, 100%, 40%);
+}
+#start_btn:hover{
+    background-color: hsl(120, 100%, 35%);
+}
+#stop_btn:hover{
+    background-color: hsl(0, 100%, 60%);
+}
+#reset_btn:hover{
+    background-color: hsl(60, 100%, 45%);
 }
