@@ -6,13 +6,19 @@ let isRunning = false;
 
 function start(){
     if(!isRunning){
-        setInterval(timer, 1000);
-        elapsedTime = Date.now() - startTime;
+        startTime = Date.now() - elapsedTime; 
+        timer = setInterval(update, 10);    //run the timer until the stop button is pressed
+        isRunning = true;   //set isRunning to true because the timer has started
     }
 }
 
 function stop(){
-    isRunning = false;
+    if(isRunning){
+        clearInterval(timer);
+        elapsedTime = Date.now() - startTime;
+        isRunning = false;
+    }
+    
 }
 
 function reset(){
@@ -24,5 +30,20 @@ function reset(){
 }
 
 function update(){
+    const currentTime = Date.now();
+    elapsedTime = currentTime - startTime;
 
+    //convert the elapsedTime to hours, minutes, seconds, milliseconds
+    let hours = Math.floor(elapsedTime / 3600000);
+    let minutes = Math.floor((elapsedTime / 60000) % 60);
+    let seconds = Math.floor((elapsedTime / 1000) % 60);
+    let milliseconds = Math.floor(elapsedTime % 1000 / 10);
+
+    hours = String(hours).padStart(2,"0");
+    minutes = String(minutes).padStart(2,"0");
+    seconds = String(seconds).padStart(2,"0");
+    milliseconds = String(milliseconds).padStart(2,"0");
+
+    //update the display
+    time_display.textContent = `${hours}:${minutes}:${seconds}:${milliseconds}`;
 }
